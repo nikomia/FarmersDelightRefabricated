@@ -1,7 +1,6 @@
 package vectorwing.farmersdelight.common.item;
 
 import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
@@ -236,7 +235,7 @@ public class SkilletItem extends BlockItem {
 
     // hack
     private static Player getClientPlayerHack() {
-        return Minecraft.getInstance().player;
+        return vectorwing.farmersdelight.client.ClientPlayerAccess.getPlayer();
     }
 
     @Override

@@ -2,6 +2,7 @@ package vectorwing.farmersdelight.common.mixin.refabricated;
 
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.level.gamerules.GameRule;
 import net.minecraft.world.level.gamerules.GameRules;
@@ -19,7 +20,7 @@ public class MinecraftServerMixin {
 
 	// Silly little workaround for gamerules not being synced to the client.
 	@Inject(method = "onGameRuleChanged", at = @At("HEAD"))
-	private <T> void fdrf$syncNaturalRegenerationGameRule(GameRule<T> rule, T value, CallbackInfo ci) {
+	private <T> void fdrf$syncNaturalRegenerationGameRule(ServerLevel level, GameRule<T> rule, T value, CallbackInfo ci) {
 		if (rule == GameRules.NATURAL_HEALTH_REGENERATION) {
 			this.playerList.getPlayers().forEach((player) -> PacketDistributor.sendToPlayer(player, new SendNaturalRegenerationValuePayload((boolean) value)));
 		}

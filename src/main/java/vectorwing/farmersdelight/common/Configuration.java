@@ -117,8 +117,6 @@ public class Configuration {
 			.define("enableTomatoRopePermanence", true);
 		COMMON_BUILDER.pop();
 
-		COMMON_BUILDER.pop();
-
 		COMMON_CONFIG = COMMON_BUILDER.build();
 
 		ModConfigSpec.Builder CLIENT_BUILDER = new ModConfigSpec.Builder();
