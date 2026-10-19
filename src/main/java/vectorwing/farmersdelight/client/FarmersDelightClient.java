@@ -6,7 +6,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.event.InputEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
@@ -39,15 +39,23 @@ public class FarmersDelightClient
 
         NeoForge.EVENT_BUS.addListener((ItemTooltipEvent event) ->
                 TooltipEvents.addTooltipToVanillaSoups(event.getItemStack(), event.getContext(), event.getFlags(), event.getToolTip()));
-        NeoForge.EVENT_BUS.addListener(FarmersDelightClient::onAttack);
+        NeoForge.EVENT_BUS.addListener(FarmersDelightClient::onClientTick);
     }
 
-    // Attacking while holding up a Skillet flips the food in it
-    private static void onAttack(InputEvent.InteractionKeyMappingTriggered event) {
-        LocalPlayer player = Minecraft.getInstance().player;
-        if (!event.isAttack() || player == null) return;
-        if (!player.isSpectator() && player.isUsingItem() && player.getUseItem().getItem() instanceof SkilletItem
-                && !player.getUseItem().has(ModDataComponents.SKILLET_FLIP_TIMESTAMP.get())) {
+    // Attacking while holding up a Skillet flips the food in it. Vanilla drops attack clicks while an item is in use
+    // and fires no input event for them, so they are taken here, right before handleKeybinds would discard them.
+    private static void onClientTick(ClientTickEvent.Pre event) {
+        Minecraft minecraft = Minecraft.getInstance();
+        LocalPlayer player = minecraft.player;
+        if (player == null || player.isSpectator() || minecraft.gui.screen() != null || minecraft.gui.overlay() != null
+                || !player.isUsingItem() || !(player.getUseItem().getItem() instanceof SkilletItem)) {
+            return;
+        }
+        boolean clicked = false;
+        while (minecraft.options.keyAttack.consumeClick()) {
+            clicked = true;
+        }
+        if (clicked && !player.getUseItem().has(ModDataComponents.SKILLET_FLIP_TIMESTAMP.get())) {
             ClientPacketDistributor.sendToServer(FlipSkilletPayload.INSTANCE);
         }
     }
