@@ -1,6 +1,5 @@
 package vectorwing.farmersdelight.common.block;
 
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -27,7 +26,6 @@ public class WildCropBlock extends FlowerBlock implements BonemealableBlock
 
 	public WildCropBlock(Holder<MobEffect> suspiciousStewEffect, int effectDuration, Properties properties) {
 		super(suspiciousStewEffect, effectDuration, properties);
-		FlammableBlockRegistry.getDefaultInstance().add(this, this.getFlammability(null, null, null, null), this.getFireSpreadSpeed(null, null, null, null));
 	}
 
 	@Override

@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:add_item",
+  "condition": {
+    "type": "minecraft:all_of",
+    "terms": [
+      {
+        "type": "minecraft:match_tool",
+        "predicate": {
+          "items": "#farmersdelight:straw_harvesters"
+        }
+      },
+      {
+        "type": "minecraft:match_block",
+        "blocks": "farmersdelight:rice_panicles",
+        "state": {
+          "age": "3"
+        }
+      }
+    ]
+  },
+  "item": "farmersdelight:straw"
+}

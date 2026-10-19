@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:add_item",
+  "condition": {
+    "type": "minecraft:all_of",
+    "terms": [
+      {
+        "type": "minecraft:match_tool",
+        "predicate": {
+          "items": "#farmersdelight:straw_harvesters"
+        }
+      },
+      {
+        "chance": 0.2,
+        "type": "minecraft:random_chance"
+      },
+      {
+        "type": "minecraft:match_block",
+        "blocks": "minecraft:tall_grass"
+      }
+    ]
+  },
+  "item": "farmersdelight:straw"
+}

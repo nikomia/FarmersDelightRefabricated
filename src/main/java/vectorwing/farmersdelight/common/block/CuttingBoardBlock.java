@@ -1,7 +1,6 @@
 package vectorwing.farmersdelight.common.block;
 
 import com.mojang.serialization.MapCodec;
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
@@ -52,9 +51,6 @@ public class CuttingBoardBlock extends BaseEntityBlock implements SimpleWaterlog
 		this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
 	}
 
-	public static void init() {
-		UseBlockCallback.EVENT.register(ToolCarvingEvent::onSneakPlaceTool);
-	}
 
 	@Override
 	public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {

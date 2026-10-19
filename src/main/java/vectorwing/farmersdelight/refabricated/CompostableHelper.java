@@ -2,7 +2,7 @@ package vectorwing.farmersdelight.refabricated;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -14,14 +14,14 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableIn
 //This is hacky and tbh not even needed but hey
 public class CompostableHelper {
 
-    public static void apply() {
+    public static void apply(ModifyDefaultComponentsEvent event) {
         JsonElement je = new Gson().fromJson(COMPOSTABLES, JsonElement.class);
         if (je != null) {
             var j = je.getAsJsonObject().get("values");
             for (var v : j.getAsJsonObject().asMap().entrySet()) {
                 Item i = BuiltInRegistries.ITEM.getValue(Identifier.tryParse(v.getKey().toString()));
-				DefaultItemComponentEvents.MODIFY.register(modifyContext -> {
-					modifyContext.modify(i, builder->{
+				{
+					event.modify(i, (builder, provider, item) -> {
 						int chance = (int) (v.getValue().getAsJsonObject().get("chance").getAsFloat()*100);
 						var compostable = switch (chance) {
 							case 100 -> ContextIntProviders.COMPOSTABLE_ALWAYS_ADD_ONE;
@@ -33,7 +33,7 @@ public class CompostableHelper {
 						};
 						builder.set(DataComponents.COMPOSTABLE, new Compostable(compostable));
 					});
-				});
+				}
             }
         }
     }

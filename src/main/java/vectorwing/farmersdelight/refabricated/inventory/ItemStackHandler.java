@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
-public class ItemStackHandler extends FabricWrappedInventory {
+public class ItemStackHandler implements ItemHandler {
     private final NonNullList<ItemStack> stacks;
 
     public ItemStackHandler() {
@@ -22,7 +22,6 @@ public class ItemStackHandler extends FabricWrappedInventory {
     }
 
     public ItemStackHandler(int size) {
-        super(size);
         this.stacks = NonNullList.withSize(size, ItemStack.EMPTY);
     }
 

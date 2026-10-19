@@ -1,7 +1,5 @@
 package vectorwing.farmersdelight.common.item;
 
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.fabricmc.fabric.api.item.v1.EnchantingContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -54,9 +52,6 @@ public class KnifeItem extends Item
         super(properties);
     }
 
-    public static void init() {
-        UseBlockCallback.EVENT.register(KnifeItem.KnifeEvents::onCakeInteraction);
-    }
 
     public static ItemAttributeModifiers createAttributes(ToolMaterial material, float attackDamage, float attackSpeed) {
         return ItemAttributeModifiers.builder()
@@ -65,12 +60,26 @@ public class KnifeItem extends Item
                 .build();
     }
 
+    // Lets other mods ask the knife about its abilities through NeoForge
     @Override
-    public boolean canBeEnchantedWith(ItemStack stack, Holder<Enchantment> enchantment, EnchantingContext context) {
+    public boolean canPerformAction(net.minecraft.world.item.ItemInstance stack, net.neoforged.neoforge.common.ItemAbility itemAbility) {
+        return KNIFE_ACTIONS.stream().anyMatch(action -> action.getSerializedName().equals(itemAbility.name()));
+    }
+
+    @Override
+    public boolean isPrimaryItemFor(ItemStack stack, Holder<Enchantment> enchantment) {
         if (enchantment.is(Enchantments.SWEEPING_EDGE)) {
             return false;
         }
-        return super.canBeEnchantedWith(stack, enchantment, context);
+        return super.isPrimaryItemFor(stack, enchantment);
+    }
+
+    @Override
+    public boolean supportsEnchantment(ItemStack stack, Holder<Enchantment> enchantment) {
+        if (enchantment.is(Enchantments.SWEEPING_EDGE)) {
+            return false;
+        }
+        return super.supportsEnchantment(stack, enchantment);
     }
 
     public static class KnifeEvents

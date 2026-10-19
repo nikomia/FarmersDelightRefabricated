@@ -19,10 +19,10 @@
     }
   ],
   "tool": {
-    "fabric:type": "fabric:any",
-    "ingredients": [
+    "neoforge:ingredient_type": "neoforge:compound",
+    "children": [
       {
-        "fabric:type": "farmersdelight:item_ability",
+        "neoforge:ingredient_type": "farmersdelight:item_ability",
         "action": "shears_dig"
       },
       "#c:tools/shear"

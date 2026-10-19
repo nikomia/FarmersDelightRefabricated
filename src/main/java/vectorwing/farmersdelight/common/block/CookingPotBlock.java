@@ -72,7 +72,7 @@ public class CookingPotBlock extends BaseEntityBlock implements SimpleWaterlogge
                     }
                     level.playSound(null, pos, SoundEvents.ARMOR_EQUIP_GENERIC.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 } else {
-                    player.openMenu(cookingPotEntity);
+                    player.openMenu(cookingPotEntity, pos);
                 }
             }
             return InteractionResult.SUCCESS;

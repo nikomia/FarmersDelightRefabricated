@@ -1,7 +1,7 @@
 {
-  "fabric:load_conditions": [
+  "neoforge:conditions": [
     {
-      "condition": "farmersdelight:vanilla_crates_enabled"
+      "type": "farmersdelight:vanilla_crates_enabled"
     }
   ],
   "parent": "minecraft:recipes/root",

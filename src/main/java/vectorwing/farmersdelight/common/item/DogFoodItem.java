@@ -1,6 +1,5 @@
 package vectorwing.farmersdelight.common.item;
 
-import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -44,9 +43,6 @@ public class DogFoodItem extends ConsumableItem
 		super(properties);
 	}
 
-	public static void init(){
-		UseEntityCallback.EVENT.register(DogFoodEvent::onDogFoodApplied);
-	}
 
 	public static class DogFoodEvent
 	{

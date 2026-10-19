@@ -12,11 +12,10 @@ import net.minecraft.world.item.ItemStack;
 import org.jspecify.annotations.NonNull;
 
 
-public class InvWrapper extends FabricWrappedInventory {
+public class InvWrapper implements ItemHandler {
     private final Container inv;
 
     public InvWrapper(Container inv) {
-        super(inv.getContainerSize());
         this.inv = inv;
     }
 

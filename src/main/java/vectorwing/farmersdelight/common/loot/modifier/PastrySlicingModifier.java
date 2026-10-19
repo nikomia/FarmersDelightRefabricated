@@ -1,6 +1,7 @@
 package vectorwing.farmersdelight.common.loot.modifier;
 
 import com.google.common.base.Suppliers;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -12,15 +13,22 @@ import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.core.Holder;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import org.jspecify.annotations.NonNull;
+import java.util.Optional;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
 import vectorwing.farmersdelight.common.block.PieBlock;
-import vectorwing.farmersdelight.refabricated.LootModifier;
 
+import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public class PastrySlicingModifier extends LootModifier
 {
+	public static final Supplier<MapCodec<PastrySlicingModifier>> CODEC = Suppliers.memoize(() ->
+			RecordCodecBuilder.mapCodec(inst -> codecStart(inst)
+					.and(BuiltInRegistries.ITEM.byNameCodec().fieldOf("slice").forGetter((m) -> m.pastrySlice))
+					.apply(inst, PastrySlicingModifier::new)));
 
 	public static final int MAX_CAKE_BITES = 7;
 	public static final int MAX_PIE_BITES = 4;
@@ -32,12 +40,16 @@ public class PastrySlicingModifier extends LootModifier
 	 * If the block is a PieBlock, it drops up to 4 slices.
 	 * Otherwise, this does nothing.
 	 */
-	public PastrySlicingModifier(LootItemCondition[] conditions, Item pastrySlice) {
-		super(conditions);
+	public PastrySlicingModifier(Optional<Holder<LootItemCondition>> conditions, int priority, Item pastrySlice) {
+		super(conditions, priority);
 		this.pastrySlice = pastrySlice;
 	}
 
-	@NonNull
+	public PastrySlicingModifier(Optional<Holder<LootItemCondition>> conditions, Item pastrySlice) {
+		this(conditions, IGlobalLootModifier.DEFAULT_PRIORITY, pastrySlice);
+	}
+
+	@Nonnull
 	@Override
 	protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 		BlockState state = context.getOptional(LootContextParams.BLOCK_STATE);
@@ -55,4 +67,8 @@ public class PastrySlicingModifier extends LootModifier
 		return generatedLoot;
 	}
 
+	@Override
+	public MapCodec<? extends IGlobalLootModifier> codec() {
+		return CODEC.get();
+	}
 }

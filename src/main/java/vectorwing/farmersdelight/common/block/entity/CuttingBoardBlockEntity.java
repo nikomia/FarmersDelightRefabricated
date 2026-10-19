@@ -1,9 +1,6 @@
 package vectorwing.farmersdelight.common.block.entity;
 
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
-import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
-import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
-import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
+import net.neoforged.neoforge.common.Tags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
@@ -61,13 +58,6 @@ public class CuttingBoardBlockEntity extends SyncedBlockEntity
 		quickCheck = RecipeManager.createCheck(ModRecipeTypes.CUTTING.get());
 	}
 
-    public static void init() {
-        ItemStorage.SIDED.registerForBlockEntity(CuttingBoardBlockEntity::getStorage, ModBlockEntityTypes.CUTTING_BOARD.get());
-    }
-
-    public Storage<ItemVariant> getStorage(@Nullable Direction side) {
-        return getInventory();
-    }
 
 	@Override
 	public void loadAdditional(@NonNull ValueInput input) {
@@ -152,7 +142,7 @@ public class CuttingBoardBlockEntity extends SyncedBlockEntity
 	public void playProcessingSound(@Nullable SoundEvent sound, ItemStack tool, ItemStack boardItem) {
 		if (sound != null) {
 			playSound(sound, 1.0F, 1.0F);
-		} else if (tool.is(ConventionalItemTags.SHEAR_TOOLS)) {
+		} else if (tool.is(Tags.Items.TOOLS_SHEAR)) {
 			playSound(SoundEvents.SHEEP_SHEAR, 1.0F, 1.0F);
 		} else if (tool.is(CommonTags.Items.TOOLS_KNIFE)) {
 			playSound(ModSounds.BLOCK_CUTTING_BOARD_KNIFE.get(), 0.8F, 1.0F);

@@ -4,7 +4,6 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.recipebook.GhostSlots;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
-import net.minecraft.client.gui.screens.recipebook.SearchRecipeBookCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.context.ContextMap;
@@ -21,26 +20,25 @@ import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.registry.ModRecipeBookCategories;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
+import net.minecraft.world.item.Items;
+
 import java.util.List;
+import java.util.Optional;
 
 public class CookingPotRecipeBookComponent extends RecipeBookComponent<CookingPotMenu>
 {
-	private static final SearchRecipeBookCategory COOKING_SEARCH_CATEGORY = SearchRecipeBookCategory.FARMERSDELIGHT_COOKING;
-
 	protected static final WidgetSprites RECIPE_BOOK_BUTTONS = new WidgetSprites(
 			Identifier.fromNamespaceAndPath(FarmersDelight.MODID, "recipe_book/cooking_pot_enabled"),
 			Identifier.fromNamespaceAndPath(FarmersDelight.MODID, "recipe_book/cooking_pot_disabled"),
 			Identifier.fromNamespaceAndPath(FarmersDelight.MODID, "recipe_book/cooking_pot_enabled_highlighted"),
 			Identifier.fromNamespaceAndPath(FarmersDelight.MODID, "recipe_book/cooking_pot_disabled_highlighted"));
-	private static final List<TabInfo> TABS = List.of(
-			new TabInfo(COOKING_SEARCH_CATEGORY),
-			new TabInfo(ModItems.VEGETABLE_NOODLES.get(), ModRecipeBookCategories.COOKING_MEALS.get()),
-			new TabInfo(ModItems.APPLE_CIDER.get(), ModRecipeBookCategories.COOKING_DRINKS.get()),
-			new TabInfo(ModItems.DUMPLINGS.get(), ModItems.TOMATO_SAUCE.get(), ModRecipeBookCategories.COOKING_MISC.get())
-	);
-
 	public CookingPotRecipeBookComponent(CookingPotMenu menu) {
-		super(menu, TABS);
+		super(menu, List.of(
+				new TabInfo(Items.COMPASS.getDefaultInstance(), Optional.empty(), ModRecipeBookCategories.COOKING_SEARCH.get()),
+				new TabInfo(ModItems.VEGETABLE_NOODLES.get(), ModRecipeBookCategories.COOKING_MEALS.get()),
+				new TabInfo(ModItems.APPLE_CIDER.get(), ModRecipeBookCategories.COOKING_DRINKS.get()),
+				new TabInfo(ModItems.DUMPLINGS.get(), ModItems.TOMATO_SAUCE.get(), ModRecipeBookCategories.COOKING_MISC.get())
+		));
 	}
 
     @Override

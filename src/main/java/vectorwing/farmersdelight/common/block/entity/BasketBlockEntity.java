@@ -1,6 +1,5 @@
 package vectorwing.farmersdelight.common.block.entity;
 
-import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -34,12 +33,6 @@ public class BasketBlockEntity extends RandomizableContainerBlockEntity implemen
 		super(ModBlockEntityTypes.BASKET.get(), pos, state);
 	}
 
-    public static void init() {
-        ItemStorage.SIDED.registerForBlockEntity(
-                (be, context) -> new BasketInvWrapper(be),
-                ModBlockEntityTypes.BASKET.get()
-        );
-    }
 
 //	@SubscribeEvent
 //	public static void registerCapabilities(RegisterCapabilitiesEvent event) {

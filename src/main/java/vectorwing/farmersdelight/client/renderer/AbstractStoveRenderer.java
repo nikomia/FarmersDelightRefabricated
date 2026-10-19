@@ -38,7 +38,7 @@ public abstract class AbstractStoveRenderer<T extends AbstractStoveBlockEntity, 
 		ItemStackRenderState[] stacks = new ItemStackRenderState[blockEntity.getItems().getSlotCount()];
 		BlockPos pos = blockEntity.getBlockPos();
 		for (int i = 0; i < blockEntity.getItems().getSlotCount(); ++i) {
-			ItemStack stack = blockEntity.getItems().getSlot(i).getResource().toStack();
+			ItemStack stack = blockEntity.getItems().getStackInSlot(i);
 			ItemStackRenderState stackRenderState = new ItemStackRenderState();
 			itemModelResolver.updateForTopItem(stackRenderState, stack, ItemDisplayContext.FIXED, blockEntity.getLevel(), null, (int) pos.asLong() + i);
 			stacks[i] = stackRenderState;

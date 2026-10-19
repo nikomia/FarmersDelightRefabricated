@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:pastry_slicing",
+  "condition": {
+    "type": "minecraft:all_of",
+    "terms": [
+      {
+        "type": "minecraft:match_tool",
+        "predicate": {
+          "items": "#farmersdelight:tools/knives"
+        }
+      },
+      {
+        "type": "minecraft:match_block",
+        "blocks": "farmersdelight:chocolate_pie"
+      }
+    ]
+  },
+  "slice": "farmersdelight:chocolate_pie_slice"
+}

@@ -3,5 +3,6 @@ package vectorwing.farmersdelight.refabricated;
 import net.minecraft.world.inventory.RecipeBookType;
 
 public class FDRecipeBookTypes {
-    public static RecipeBookType COOKING = RecipeBookType.FARMERSDELIGHT_COOKING;
+    // Added through META-INF/enumextensions.json
+    public static final RecipeBookType COOKING = RecipeBookType.valueOf("FARMERSDELIGHT_COOKING");
 }

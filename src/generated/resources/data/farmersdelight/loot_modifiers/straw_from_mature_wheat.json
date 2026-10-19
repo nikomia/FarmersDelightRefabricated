@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:add_item",
+  "condition": {
+    "type": "minecraft:all_of",
+    "terms": [
+      {
+        "type": "minecraft:match_tool",
+        "predicate": {
+          "items": "#farmersdelight:straw_harvesters"
+        }
+      },
+      {
+        "type": "minecraft:match_block",
+        "blocks": "minecraft:wheat",
+        "state": {
+          "age": "7"
+        }
+      }
+    ]
+  },
+  "item": "farmersdelight:straw"
+}

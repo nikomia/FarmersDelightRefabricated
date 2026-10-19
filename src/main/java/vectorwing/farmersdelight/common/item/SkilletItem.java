@@ -1,8 +1,5 @@
 package vectorwing.farmersdelight.common.item;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.item.v1.EnchantingContext;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -72,14 +69,14 @@ public class SkilletItem extends BlockItem {
     }
 
 	@Override
-	public boolean allowComponentsUpdateAnimation(Player player, InteractionHand hand, ItemStack oldStack, ItemStack newStack) {
+	public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
 		if (compareComponents(oldStack, newStack, ModDataComponents.SKILLET_FLIP_TIMESTAMP.get()) ||
 			compareComponents(oldStack, newStack, ModDataComponents.COOKING_TIME_LENGTH.get()) ||
 			compareComponents(oldStack, newStack, ModDataComponents.SKILLET_INGREDIENT.get())) {
 			return false;
 		}
 
-		return super.allowComponentsUpdateAnimation(player, hand, oldStack, newStack);
+		return super.shouldCauseReequipAnimation(oldStack, newStack, slotChanged);
 	}
 
 	// Refabricated: Slightly more readable way of handling what FD does.
@@ -238,7 +235,6 @@ public class SkilletItem extends BlockItem {
     }
 
     // hack
-    @Environment(EnvType.CLIENT)
     private static Player getClientPlayerHack() {
         return Minecraft.getInstance().player;
     }
@@ -280,11 +276,19 @@ public class SkilletItem extends BlockItem {
     }
 
     @Override
-    public boolean canBeEnchantedWith(ItemStack stack, Holder<Enchantment> enchantment, EnchantingContext context) {
+    public boolean isPrimaryItemFor(ItemStack stack, Holder<Enchantment> enchantment) {
         if (enchantment.is(Enchantments.SWEEPING_EDGE)) {
             return false;
         }
-        return super.canBeEnchantedWith(stack, enchantment, context);
+        return super.isPrimaryItemFor(stack, enchantment);
+    }
+
+    @Override
+    public boolean supportsEnchantment(ItemStack stack, Holder<Enchantment> enchantment) {
+        if (enchantment.is(Enchantments.SWEEPING_EDGE)) {
+            return false;
+        }
+        return super.supportsEnchantment(stack, enchantment);
     }
 
     public static class SkilletEvents {

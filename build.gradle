@@ -1,275 +1,206 @@
 plugins {
-    id 'net.fabricmc.fabric-loom' version '1.17-SNAPSHOT'
+    id 'java-library'
+//    id 'eclipse'
+    id 'idea'
     id 'maven-publish'
-    id "me.modmuss50.mod-publish-plugin" version "2.2.0"
+    id 'net.neoforged.moddev' version '2.0.148'
 }
 
-mod_version = minecraft_major_version + "-" + mod_version
-version = mod_version + "+refabricated"
-group = mod_group_id
-
-base {
-    archivesName = "FarmersDelight"
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
 }
 
-fabricApi {
-    configureDataGeneration {
-        client = true
-        outputDirectory = file("src/generated/resources")
-        strictValidation = false
-        createSourceSet = true
-        modId = project.mod_id
-        client = true
-    }
+version = "${minecraft_version}-${mod_version}"
+group = 'vectorwing.farmersdelight'
+
+// Датаген на 26.3 не перенесён: готовые ресурсы лежат в src/generated
+sourceSets.main.java {
+    exclude 'vectorwing/farmersdelight/data/**'
+    exclude 'vectorwing/farmersdelight/refabricated/mlconfigs/**'
+    exclude 'vectorwing/farmersdelight/refabricated/data/**'
+    // Fabric-only: на NeoForge экран настроек открывается из списка модов
+    exclude 'vectorwing/farmersdelight/integration/modmenu/**'
 }
 
-loom {
-    accessWidenerPath = file("src/main/resources/farmersdelight.classtweaker")
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+    exclude(".cache")
 }
 
 repositories {
-
-    flatDir {
-        dirs 'mods'
-    }
-
-    maven { url "https://maven.parchmentmc.org" }
-
     maven {
-        url = "https://www.cursemaven.com"
-        allowInsecureProtocol = true
-    }
-
-    maven {
-        url "https://maven.firstdarkdev.xyz/snapshots"
-    }
-
-    maven {
-        name = 'Ladysnake Mods'
-        url = 'https://maven.ladysnake.org/releases'
-    }
-
-    maven {
-        url = "https://api.modrinth.com/maven"
-    }
-
-    maven {
-        // CraftTweaker, JEI
-        name = "BlameJared"
+        // JEI
+        name = "Progwml6 maven"
         url = "https://maven.blamejared.com/"
     }
-    maven { url "https://maven.ryanliptak.com/" } // AppleSkin
-    maven { url = "https://maven.parchmentmc.org" } // Parchment
-    maven { url = "https://maven.fabricmc.net/" } // FAPI, Loader
-    maven { url = "https://maven.architectury.dev/" } // REI and deps
-    maven { url = "https://maven.shedaniel.me/" } // REI and deps
-    maven { url = "https://maven.terraformersmc.com/" } // Mod Menu, EMI
-    mavenCentral() // Mixin Extras
-     exclusiveContent {
+    maven {
+        // CraftTweaker
+        name = "BlameJared"
+        url = "https://maven.blamejared.com"
+    }
+    maven { url "https://maven.ryanliptak.com/" }
+    maven {
+        // EMI
+        url = "https://maven.terraformersmc.com/"
+    }
+    maven { url = "https://maven.shedaniel.me/" } // REI
+    exclusiveContent {
         forRepository {
-            maven {
-                name = "cassian's maven"
-                url = "https://maven.cassian.cc"
-            }
+            maven { url = "https://api.modrinth.com/maven" }
         }
-        filter {
-            includeGroup( "cc.cassian.rrv")
+        filter { includeGroup("maven.modrinth") }
+    }
+}
+
+base {
+    archivesName = 'FarmersDelight'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+neoForge {
+    version = project.neo_version
+
+    // This line is optional. Access Transformers are automatically detected
+    // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
+
+    runs {
+        client {
+            client()
+
+            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        server {
+            server()
+//            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        // This run config launches GameTestServer and runs all registered gametests, then exits.
+        // By default, the server will crash when no gametests are provided.
+        // The gametest system is also enabled by default for other run configs under the /test command.
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        data {
+            clientData()
+
+            // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
+            // gameDirectory = project.file('run-data')
+
+            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+
+        configureEach {
+            // Recommended logging data for a userdev environment
+            // The markers can be added/remove as needed separated by commas.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+
+            // Recommended logging level for the console
+            // You can set various levels here.
+            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
+            logLevel = org.slf4j.event.Level.DEBUG
         }
     }
-    maven {
-        name = "NeoForge"
-        url = uri("https://maven.neoforged.net/releases/")
-        content {
-            includeGroupAndSubgroups("net.neoforged")
-            includeGroupAndSubgroups("cpw.mods")
-            includeGroupAndSubgroups("net.minecraftforge")
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
         }
     }
-    maven {
-        name = "Xander Maven"
-        url = uri("https://maven.isxander.dev/releases")
-        content {
-            includeGroupAndSubgroups("dev.isxander")
-            includeGroupAndSubgroups("org.quiltmc.parsers")
-        }
-    }
+}
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
 }
 
 dependencies {
-    // To change the versions see the gradle.properties file
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    // JEI
+    compileOnly "mezz.jei:jei-${jei_minecraft}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${jei_minecraft}-neoforge-api:${jei_version}"
+    localRuntime "mezz.jei:jei-${jei_minecraft}-neoforge:${jei_version}"
 
-    implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    // REI
+    compileOnly("me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}") { transitive = false }
+    compileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${rei_version}") { transitive = false }
+    compileOnly "me.shedaniel.cloth:basic-math:0.6.1"
+    compileOnly "maven.modrinth:architectury-api:${architectury_version}"
 
-    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    // RRV
+    compileOnly "maven.modrinth:rrv:${rrv_version}"
 
-    //config stuff. optional
-    compileOnly("me.shedaniel.cloth:cloth-config-neoforge:${cloth_version}")
-    compileOnly("dev.isxander:yet-another-config-lib:${project.yacl_version}")
-    localRuntime("dev.isxander:yet-another-config-lib:${project.yacl_version}")
-    compileOnly("maven.modrinth:modmenu:${project.modmenu_version}")
-    localRuntime("com.terraformersmc:modmenu:${project.modmenu_version}")
+    // EMI
+//    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
+//    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
 
-//    modCompileOnly("com.blamejared.crafttweaker:CraftTweaker-fabric-${minecraft_version}:${crafttweaker_version}")
-    // Uncomment the below to test CraftTweaker.
-    // modLocalRuntime("com.blamejared.crafttweaker:CraftTweaker-fabric-${minecraft_version}:${crafttweaker_version}")
+    // AppleSkin
+    compileOnly "squeek.appleskin:appleskin-neoforge:${appleskin_version}:api"
+    runtimeOnly "squeek.appleskin:appleskin-neoforge:${appleskin_version}"
 
-    compileOnly("mezz.jei:jei-26.1.2-common-api:${jei_version}")
-    compileOnly("mezz.jei:jei-26.1.2-fabric-api:${jei_version}") {
-        transitive = false
-    }
-    // Uncomment the below to test JEI.
-//     localRuntime("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
-
-    compileOnly("me.shedaniel.cloth:basic-math:0.6.1")
-    compileOnly("dev.architectury:architectury-fabric:20.0.7")
-    compileOnly("me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}") {
-        exclude(group: "dev.architectury")
-    }
-    compileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${rei_version}") {
-        exclude(group: "dev.architectury")
-    }
-    // Uncomment the below to test REI.
-//      localRuntime("me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}") {
-//          exclude(group: "dev.architectury")
-//      }
-//    localRuntime("dev.architectury:architectury-fabric:20.0.7")
-
-//    compileOnly("dev.emi:emi-fabric:${emi_version}:api") {
-//        exclude(group: "net.fabricmc.fabric-api")
-//    }
-    // Uncomment the below to test EMI.
-//    localRuntime("dev.emi:emi-fabric:${emi_version}") {
-//        exclude(group: "net.fabricmc.fabric-api")
-//    }
-
-    compileOnly("cc.cassian.rrv:reliable-recipe-viewer-fabric:${rrv_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-        exclude(group: "eu.pb4")
-    }
-    // Uncomment the below to test RRV.
-     localRuntime("cc.cassian.rrv:reliable-recipe-viewer-fabric:${rrv_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-        exclude(group: "eu.pb4")
-     }
-    compileOnly("net.neoforged:neoforge:26.1.2.71:universal")
-    compileOnly("net.neoforged.fancymodloader:loader:11.0.0")
-
+//    def ctDep = "com.blamejared.crafttweaker:CraftTweaker-neoforge-${crafttweaker_minecraft}:${crafttweaker_version}"
+//    compileOnly ctDep
+//    runtimeOnly ctDep
 }
 
-var changelogFile = rootProject.file("changelog.md")
-var changelogText = changelogFile.exists() ? changelogFile.text : ""
-
-publishMods {
-    file = jar.archiveFile
-    changelog = changelogText
-    type = STABLE
-    displayName = "Farmer's Delight Refabricated ${mod_version.split("-")[1]} - ${minecraft_version}"
-    version = mod_version
-
-    modLoaders.add("fabric")
-
-    curseforge {
-        projectId = curseforge_project_id
-
-        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
-
-        minecraftVersions.addAll(minecraft_supported_versions.split(","))
-        javaVersions.add(JavaVersion.VERSION_25)
-
-        clientRequired = true
-        serverRequired = true
-
-        requires("fabric-api")
-//        optional("crafttweaker")
-        optional("jei")
-//        optional("roughly-enough-items")
-//        optional("emi")
-        optional("rrv")
-    }
-
-    modrinth {
-        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
-        projectId = modrinth_project_id
-
-        minecraftVersions.addAll(minecraft_supported_versions.split(","))
-
-        requires("fabric-api")
-//        optional("crafttweaker")
-        optional("jei")
-//        optional("rei")
-//        optional("emi")
-        optional("rrv")
-    }
-}
-
-processResources {
+tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
-            minecraft_version    : minecraft_version,
-            minecraft_required   : minecraft_required,
-
-            mod_id               : mod_id,
-            mod_name             : mod_name,
-            mod_version          : version,
-            mod_license          : mod_license,
-            mod_authors          : mod_authors,
-            mod_description      : mod_description,
-            mod_credits          : mod_credits,
-            mod_homepage         : mod_homepage,
-            mod_github           : mod_github,
-            fabric_loader_version: fabric_loader_version,
-            fabric_api_version   : fabric_api_version
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
     ]
-    // setting them as input
     inputs.properties replaceProperties
 
-    filesMatching("fabric.mod.json") {
-        expand replaceProperties + [project: project]
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
     }
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = 25
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
-java {
-    // Loom will automatically attach sourcesJar to a SourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
-    withSourcesJar()
-
-    sourceCompatibility = JavaVersion.VERSION_25
-    targetCompatibility = JavaVersion.VERSION_25
-}
-
-jar {
-    from("LICENSE") {
-        rename { "${it}_${project.base.archivesName.get()}"}
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
     }
 }
 
-// configure the maven publication
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.base.archivesName.get()
-            version project.version
-            from components.java
-        }
-    }
+////////////////
 
-    repositories {
-        maven {
-            name "greenhouse"
-            url "https://maven.greenhouse.lgbt/releases"
-            credentials {
-                username System.getenv('MAVEN_USERNAME')
-                password System.getenv('MAVEN_PASSWORD')
-            }
-            authentication {
-                create("basic", BasicAuthentication)
-            }
-        }
-    }
+//compileJava {
+//    options.compilerArgs << "-Acrafttweaker.processor.document.output_directory=${file('docsOut')}"
+//}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-Xmaxerrs', '2000']
 }

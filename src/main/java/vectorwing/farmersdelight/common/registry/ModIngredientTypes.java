@@ -1,7 +1,17 @@
 package vectorwing.farmersdelight.common.registry;
 
-/**
- * Deprecated: Check {@link vectorwing.farmersdelight.common.crafting.ingredient.ItemAbilityIngredient.Serializer}.
- */
-@Deprecated
-public class ModIngredientTypes {}
+import net.neoforged.neoforge.common.crafting.IngredientType;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import vectorwing.farmersdelight.FarmersDelight;
+import vectorwing.farmersdelight.common.crafting.ingredient.ItemAbilityIngredient;
+
+import java.util.function.Supplier;
+
+public class ModIngredientTypes
+{
+	public static final DeferredRegister<IngredientType<?>> INGREDIENT_TYPES = DeferredRegister.create(NeoForgeRegistries.INGREDIENT_TYPES, FarmersDelight.MODID);
+
+	public static final Supplier<IngredientType<ItemAbilityIngredient>> ITEM_ABILITY = INGREDIENT_TYPES.register("item_ability",
+			() -> new IngredientType<>(ItemAbilityIngredient.CODEC, ItemAbilityIngredient.STREAM_CODEC));
+}

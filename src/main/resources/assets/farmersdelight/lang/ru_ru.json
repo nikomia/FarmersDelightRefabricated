@@ -37,7 +37,6 @@
   "block.farmersdelight.rice_bale": "Рисовый тюк",
   "block.farmersdelight.rice_bag": "Мешок риса",
   "block.farmersdelight.straw_bale": "Тюк соломы",
-
   "block.farmersdelight.canvas_sign": "Холщовая табличка",
   "block.farmersdelight.white_canvas_sign": "Белая холщовая табличка",
   "block.farmersdelight.orange_canvas_sign": "Оранжевая холщовая табличка",
@@ -55,7 +54,6 @@
   "block.farmersdelight.green_canvas_sign": "Зелёная холщовая табличка",
   "block.farmersdelight.red_canvas_sign": "Красная холщовая табличка",
   "block.farmersdelight.black_canvas_sign": "Чёрная холщовая табличка",
-
   "block.farmersdelight.canvas_wall_sign": "Настенная холщовая табличка",
   "block.farmersdelight.white_canvas_wall_sign": "Белая настенная холщовая табличка",
   "block.farmersdelight.orange_canvas_wall_sign": "Оранжевая настенная холщовая табличка",
@@ -73,7 +71,6 @@
   "block.farmersdelight.green_canvas_wall_sign": "Зелёная настенная холщовая табличка",
   "block.farmersdelight.red_canvas_wall_sign": "Красная настенная холщовая табличка",
   "block.farmersdelight.black_canvas_wall_sign": "Чёрная настенная холщовая табличка",
-
   "block.farmersdelight.hanging_canvas_sign": "Подвесная холщовая табличка",
   "block.farmersdelight.white_hanging_canvas_sign": "Белая подвесная холщовая табличка",
   "block.farmersdelight.orange_hanging_canvas_sign": "Оранжевая подвесная холщовая табличка",
@@ -91,7 +88,6 @@
   "block.farmersdelight.green_hanging_canvas_sign": "Зелёная подвесная холщовая табличка",
   "block.farmersdelight.red_hanging_canvas_sign": "Красная подвесная холщовая табличка",
   "block.farmersdelight.black_hanging_canvas_sign": "Чёрная подвесная холщовая табличка",
-
   "block.farmersdelight.wall_hanging_canvas_sign": "Настенная подвесная холщовая табличка",
   "block.farmersdelight.white_wall_hanging_canvas_sign": "Белая настенная подвесная холщовая табличка",
   "block.farmersdelight.orange_wall_hanging_canvas_sign": "Оранжевая настенная подвесная холщовая табличка",
@@ -109,7 +105,6 @@
   "block.farmersdelight.green_wall_hanging_canvas_sign": "Зелёная настенная подвесная холщовая табличка",
   "block.farmersdelight.red_wall_hanging_canvas_sign": "Красная настенная подвесная холщовая табличка",
   "block.farmersdelight.black_wall_hanging_canvas_sign": "Чёрная настенная подвесная холщовая табличка",
-
   "block.farmersdelight.budding_tomatoes": "Цветущая томатная лоза",
   "block.farmersdelight.tomatoes": "Томатная лоза",
   "block.farmersdelight.tomatoes_on_rope": "Томатная лоза на верёвке",
@@ -119,7 +114,6 @@
   "block.farmersdelight.rice_panicles": "Рисовые паникулы",
   "block.farmersdelight.brown_mushroom_colony": "Колония коричневых грибов",
   "block.farmersdelight.red_mushroom_colony": "Колония красных грибов",
-
   "block.farmersdelight.sandy_shrub": "Песчаный куст",
   "block.farmersdelight.wild_cabbages": "Дикая капуста",
   "block.farmersdelight.wild_tomatoes": "Томатный куст",
@@ -128,12 +122,10 @@
   "block.farmersdelight.wild_potatoes": "Дикий картофель",
   "block.farmersdelight.wild_beetroots": "Морская свёкла",
   "block.farmersdelight.wild_rice": "Дикий рис",
-
   "block.farmersdelight.apple_pie": "Яблочный пирог",
   "block.farmersdelight.sweet_berry_cheesecake": "Чизкейк со сладкими ягодами",
   "block.farmersdelight.chocolate_pie": "Шоколадный пирог",
   "block.farmersdelight.pumpkin_pie": "Тыквенный пирог",
-
   "item.farmersdelight.tomato": "Томат",
   "item.farmersdelight.cabbage": "Капуста",
   "item.farmersdelight.onion": "Лук",
@@ -142,11 +134,9 @@
   "item.farmersdelight.tomato_seeds": "Семена томатов",
   "item.farmersdelight.rice_panicle": "Рисовая паникула",
   "item.farmersdelight.rotten_tomato": "Гнилой томат",
-
   "item.farmersdelight.straw": "Солома",
   "item.farmersdelight.canvas": "Холст",
   "item.farmersdelight.tree_bark": "Кора дерева",
-
   "item.farmersdelight.tomato_sauce": "Томатный соус",
   "item.farmersdelight.fried_egg": "Яичница",
   "item.farmersdelight.milk_bottle": "Бутылочка молока",
@@ -171,7 +161,6 @@
   "item.farmersdelight.cooked_mutton_chops": "Жареные бараньи отбивные",
   "item.farmersdelight.ham": "Ветчина",
   "item.farmersdelight.smoked_ham": "Копчёная ветчина",
-
   "item.farmersdelight.pie_crust": "Заготовка для пирога",
   "item.farmersdelight.cake_slice": "Кусочек торта",
   "item.farmersdelight.apple_pie_slice": "Кусочек яблочного пирога",
@@ -183,15 +172,12 @@
   "item.farmersdelight.honey_cookie": "Медовое печенье",
   "item.farmersdelight.melon_popsicle": "Арбузное эскимо",
   "item.farmersdelight.glow_berry_custard": "Крем из светящихся ягод",
-
   "item.farmersdelight.earthworm": "Дождевой червь",
-
   "item.farmersdelight.flint_knife": "Кремневый нож",
   "item.farmersdelight.iron_knife": "Железный нож",
   "item.farmersdelight.golden_knife": "Золотой нож",
   "item.farmersdelight.diamond_knife": "Алмазный нож",
   "item.farmersdelight.netherite_knife": "Незеритовый нож",
-
   "item.farmersdelight.barbecue_stick": "Барбекю на палочке",
   "item.farmersdelight.egg_sandwich": "Сэндвич с яйцом",
   "item.farmersdelight.chicken_sandwich": "Сэндвич с курицей",
@@ -205,7 +191,6 @@
   "item.farmersdelight.cod_roll": "Ролл с треской",
   "item.farmersdelight.kelp_roll": "Ролл с ламинарией",
   "item.farmersdelight.kelp_roll_slice": "Ломтик ролла с ламинарией",
-
   "item.farmersdelight.cooked_rice": "Варёный рис",
   "item.farmersdelight.mixed_salad": "Смешанный салат",
   "item.farmersdelight.nether_salad": "Незерский салат",
@@ -219,7 +204,6 @@
   "item.farmersdelight.noodle_soup": "Лапшичный суп",
   "item.farmersdelight.onion_soup": "Луковый суп",
   "item.farmersdelight.bone_broth": "Костный бульон",
-
   "item.farmersdelight.bacon_and_eggs": "Яичница с беконом",
   "item.farmersdelight.pasta_with_meatballs": "Паста с фрикадельками",
   "item.farmersdelight.pasta_with_mutton_chop": "Паста с рубленой бараниной",
@@ -230,7 +214,6 @@
   "item.farmersdelight.squid_ink_pasta": "Паста с чернилами спрута",
   "item.farmersdelight.grilled_salmon": "Лосось на гриле",
   "item.farmersdelight.mushroom_rice": "Рис с грибами",
-
   "block.farmersdelight.roast_chicken_block": "Обжареная курица",
   "item.farmersdelight.roast_chicken": "Тарелка обжареной курицы",
   "block.farmersdelight.stuffed_pumpkin_block": "Фаршированная тыква",
@@ -242,22 +225,16 @@
   "block.farmersdelight.gleaming_salad_block": "Блестящий салат",
   "item.farmersdelight.gleaming_salad": "Миска блестящего салата",
   "block.farmersdelight.rice_roll_medley_block": "Ассорти из роллов",
-
   "item.farmersdelight.dog_food": "Собачий корм",
   "item.farmersdelight.horse_feed": "Лошадиный корм",
-
   "entity.farmersdelight.rotten_tomato": "Гнилой томат",
-
   "effect.farmersdelight.nourishment": "Сытость",
   "effect.farmersdelight.nourishment.description": "Предотвращает потерю голода, за исключением случаев использования насыщения для лечения.",
   "effect.farmersdelight.comfort": "Комфорт",
   "effect.farmersdelight.comfort.description": "Обеспечивает естественную регенерацию, независимо от того, насколько вы голодны.",
-
   "enchantment.farmersdelight.backstabbing": "Предательство",
   "enchantment.farmersdelight.backstabbing.description": "Увеличивает урон при атаке цели со спины.",
-
   "itemGroup.farmersdelight": "Фермерские Изыски",
-
   "container.farmersdelight.recipe_book.cookable": "Доступно к готовке",
   "container.farmersdelight.cooking_pot": "Кухонный котёл",
   "container.farmersdelight.cooking_pot.served_on": "Подаётся: %s",
@@ -265,7 +242,6 @@
   "container.farmersdelight.cooking_pot.heated": "Нагрето",
   "container.farmersdelight.basket": "Корзина",
   "container.farmersdelight.cabinet": "Кладовая",
-
   "tooltip.farmersdelight.cooking_pot.empty": "Пусто",
   "tooltip.farmersdelight.cooking_pot.single_serving": "Содержит одну порцию:",
   "tooltip.farmersdelight.cooking_pot.many_servings": "Содержит %s порций:",
@@ -277,10 +253,8 @@
   "tooltip.farmersdelight.placeable": "Можно разместить",
   "tooltip.farmersdelight.placeable_sneaking": "Можно разместить крадучись",
   "tooltip.farmersdelight.debug_item": "Предмет для отладки — не предназначен для игры",
-
   "advancements.farmersdelight.root.title": "Фермерские изыски",
   "advancements.farmersdelight.root.description": "Вас ждёт целый мир разнообразных вкусов!",
-
   "advancements.farmersdelight.craft_knife.title": "Охота и собирательство",
   "advancements.farmersdelight.craft_knife.description": "Создайте нож, чтобы добывать больше продуктов из растений и животных",
   "advancements.farmersdelight.harvest_straw.title": "Хватаясь за соломинку",
@@ -295,7 +269,6 @@
   "advancements.farmersdelight.use_cutting_board.description": "Держа инструмент в руках, используйте его на разделочной доске, чтобы разделать некоторые предметы",
   "advancements.farmersdelight.obtain_netherite_knife.title": "Не выносишь жару...",
   "advancements.farmersdelight.obtain_netherite_knife.description": "Потратьте целый незеритовый слиток, чтобы улучшить свой нож! Или свалите с кухни.",
-
   "advancements.farmersdelight.get_fd_seed.title": "Урожаи дикой природы",
   "advancements.farmersdelight.get_fd_seed.description": "Четыре новых культуры можно найти в дикой природе, в разных климатах... или где-нибудь в сундуках.",
   "advancements.farmersdelight.plant_rice.title": "Пускать корни",
@@ -308,7 +281,6 @@
   "advancements.farmersdelight.get_mushroom_colony.description": "Посадите грибы в тёмное место, дождитесь образования колонии, а затем срежьте её!",
   "advancements.farmersdelight.plant_all_crops.title": "Севооборот",
   "advancements.farmersdelight.plant_all_crops.description": "Вырастите все фрукты, овощи, грибы и корни, какие только сможете найти!",
-
   "advancements.farmersdelight.place_campfire.title": "Костер зажжён",
   "advancements.farmersdelight.place_campfire.description": "Поставьте костёр, чтобы согреться ночью",
   "advancements.farmersdelight.use_skillet.title": "Готовка на ходу",
@@ -323,7 +295,6 @@
   "advancements.farmersdelight.place_feast.description": "Некоторые блюда лучше всего подавать на стол, чтобы разделить их с друзьями. Приготовьте свои миски!",
   "advancements.farmersdelight.master_chef.title": "Шеф-повар",
   "advancements.farmersdelight.master_chef.description": "Попробуйте все доступные виды блюд!",
-
   "subtitles.farmersdelight.block.cooking_pot.boil": "Варка в кухонном котле",
   "subtitles.farmersdelight.block.cutting_board.place_item": "Предмет помещён на доску",
   "subtitles.farmersdelight.block.cutting_board.remove_item": "Предмет убран с доски",
@@ -341,7 +312,6 @@
   "subtitles.farmersdelight.block.food.slice": "Выпечка нарезана",
   "subtitles.farmersdelight.entity.rotten_tomato.throw": "Гнилой томат летит",
   "subtitles.farmersdelight.entity.rotten_tomato.hit": "Гнилой томат лопается",
-
   "block.farmersdelight.feast.use_container": "Вам нужно %s чтобы съесть это.",
   "block.farmersdelight.rice.invalid_placement": "Этот посев не выживет за пределами мелководья.",
   "block.farmersdelight.cutting_board.invalid_item": "Кажется, это нельзя разрезать...",
@@ -351,10 +321,8 @@
   "block.farmersdelight.skillet.underwater": "Нельзя готовить при затоплении...",
   "item.farmersdelight.skillet.how_to_cook": "Используйте другую руку, чтобы держать ингредиенты!",
   "item.farmersdelight.skillet.underwater": "Нельзя готовить под водой...",
-
   "death.attack.farmersdelight.stove": "%1$s был зажарен на гриле",
   "death.attack.farmersdelight.stove.player": "%1$s был брошен на гриль шефом %2$s",
-
   "jei.farmersdelight.cooking": "Готовка",
   "jei.farmersdelight.cutting": "Разделывание на доске",
   "jei.farmersdelight.chance": "%1$s%% шанс",
@@ -362,7 +330,6 @@
   "jei.farmersdelight.decomposition.light": "Процесс ускоряется под воздействием солнечного света",
   "jei.farmersdelight.decomposition.fluid": "Процесс ускоряется посредством добавления воды",
   "jei.farmersdelight.decomposition.accelerators": "Процесс ускоряется посредством добавления активаторов (см. выше)",
-
   "jei.farmersdelight.info.dough": "Пшеницу можно превратить в тесто, замесив её с ведром воды. Но не волнуйтесь, вода в ведре не закончится!",
   "jei.farmersdelight.info.straw": "Сухое растительное волокно, используемое для создания предметов. Получают путем срезания ножом травянистых культур и растений.",
   "jei.farmersdelight.info.knife": "Лёгкое оружие ближнего боя, с быстрыми взмахами и небольшим уроном.\n\nОни могут собирать солому с травы и гарантируют получение вторичной добычи с животных.",
@@ -374,11 +341,9 @@
   "jei.farmersdelight.info.wild_potatoes": "Картофель обычно можно встретить как дикорастущее растение в холодных местах, таких как горы и тайга.",
   "jei.farmersdelight.info.wild_tomatoes": "Томаты обычно можно встретить как дикорастущее растение в засушливых местах, таких как саванны и пустыни.",
   "jei.farmersdelight.info.wild_rice": "Рис обычно можно встретить как дикорастущее растение в водоемах на влажных землях, таких как болота и джунгли.",
-
   "emi.category.farmersdelight.cooking": "Готовка",
   "emi.category.farmersdelight.cutting": "Разделывание на доске",
   "emi.category.farmersdelight.decomposition": "Разложение",
-
   "tag.item.c.crops.cabbage": "Посевы капусты",
   "tag.item.c.crops.grain": "Посевы зерновых",
   "tag.item.c.crops.onion": "Посевы лука",
@@ -419,7 +384,6 @@
   "tag.item.c.storage_blocks.rice": "Блоки хранения риса",
   "tag.item.c.storage_blocks.rice_panicle": "Блоки хранения рисовых паникул",
   "tag.item.c.storage_blocks.straw": "Блоки хранения соломы",
-
   "tag.block.farmersdelight.cabinets": "Кладовые",
   "tag.block.farmersdelight.cabinets.wooden": "Деревянные кладовые",
   "tag.block.farmersdelight.campfire_signal_smoke": "Сигнальный дым костра",
@@ -439,7 +403,6 @@
   "tag.block.farmersdelight.tray_heat_sources": "Источники тепла с поддоном",
   "tag.block.farmersdelight.unaffected_by_rich_soil": "Не затронуты плодородной почвой",
   "tag.block.farmersdelight.wild_crops": "Дикие культуры",
-
   "tag.item.farmersdelight.cabinets": "Кладовые",
   "tag.item.farmersdelight.cabinets.wooden": "Деревянные кладовые",
   "tag.item.farmersdelight.canvas_signs": "Холщовые таблички",
@@ -457,14 +420,11 @@
   "tag.item.farmersdelight.sweets": "Сладости",
   "tag.item.farmersdelight.tools.knives": "Ножи",
   "tag.item.farmersdelight.wild_crops": "Дикорастущие культуры",
-
   "farmersdelight.configuration.title": "Фермерские Изыски — настройки",
-
   "farmersdelight.configuration.section.farmersdelight.client.toml": "Клиентские настройки",
   "farmersdelight.configuration.section.farmersdelight.client.toml.title": "Клиентские настройки",
   "farmersdelight.configuration.section.farmersdelight.common.toml": "Общие настройки",
   "farmersdelight.configuration.section.farmersdelight.common.toml.title": "Общие настройки",
-
   "farmersdelight.configuration.settings": "Настройки игры",
   "farmersdelight.configuration.farming": "Фермерство",
   "farmersdelight.configuration.crafting": "Создание",
@@ -473,7 +433,6 @@
   "farmersdelight.configuration.world": "Генерация мира",
   "farmersdelight.configuration.debug": "Настройки отладки",
   "farmersdelight.configuration.debug.tooltip": "§lВнимание:§r Этот раздел не предназначен для стандартного игрового процесса.",
-
   "farmersdelight.configuration.enableFarmerFDTrades": "Особые сделки у фермеров",
   "farmersdelight.configuration.enableFarmerFDTrades.tooltip": "Если включено, крестьяне-фермеры уровня «Новичок» и «Подмастерье» будут иметь шанс покупать культуры из этого мода.",
   "farmersdelight.configuration.enableWanderingTraderFDTrades": "Особые сделки у странствующих торговцев",
@@ -482,21 +441,18 @@
   "farmersdelight.configuration.enableRopeReeling.tooltip": "Если включено, игроки смогут сматывать верёвку снизу вверх, используя пустую руку с зажатым Shift.",
   "farmersdelight.configuration.canvasSignDarkBackgroundList": "Холщовые таблички с тёмным фоном",
   "farmersdelight.configuration.canvasSignDarkBackgroundList.tooltip": "Список цветов красителей, при использовании которых в качестве фона холщовой таблички текст по умолчанию будет белым.\n\nКрасители:\n[\"white\", \"orange\", \"magenta\", \"light_blue\", \"yellow\", \"lime\", \"pink\", \"gray\", \"light_gray\", \"cyan\", \"purple\", \"blue\", \"brown\", \"green\", \"red\", \"black\"]",
-
   "farmersdelight.configuration.richSoilBoostChance": "Шанс бонуса плодородной почвы",
   "farmersdelight.configuration.richSoilBoostChance.tooltip": "Шанс (в десятичных долях) того, что плодородная почва даст бонус костной муки культуре, посаженной на ней. Установите 0.0, чтобы отключить.",
   "farmersdelight.configuration.enableTomatoVineClimbingTaggedRopes": "Томатная лоза вьётся по верёвкам в теге",
   "farmersdelight.configuration.enableTomatoVineClimbingTaggedRopes.tooltip": "Если включено, томатные культуры смогут виться по любой верёвке с тегом farmersdelight:ropes. Если отключено, лоза будет ограничена только верёвкой из этого мода.\n\n§lВнимание: это преобразует такие блоки в блок, указанный в defaultTomatoVineRope.§r",
   "farmersdelight.configuration.defaultTomatoVineRope": "Верёвка для томатной лозы по умолчанию",
   "farmersdelight.configuration.defaultTomatoVineRope.tooltip": "Какую верёвку должна оставлять после себя томатная лоза при разрушении?",
-
   "farmersdelight.configuration.enableCookingPotRecipeBook": "Книга рецептов кухонного котла",
   "farmersdelight.configuration.enableCookingPotRecipeBook.tooltip": "Если включено, кухонный котёл будет отображать книгу рецептов в своём интерфейсе, аналогично верстаку и печи.",
   "farmersdelight.configuration.enableVanillaCropCrates": "Ящики для ванильных культур",
   "farmersdelight.configuration.enableVanillaCropCrates.tooltip": "Если включено, ящики для хранения (3×3) ванильных культур (аналогично Quark и Thermal Cultivation) станут доступны для создания.",
   "farmersdelight.configuration.cuttingBoardFortuneBonus": "Бонус удачи разделочной доски",
   "farmersdelight.configuration.cuttingBoardFortuneBonus.tooltip": "На сколько (в десятичных долях) каждый уровень удачи увеличивает шанс получения редких результатов на разделочной доске? Установите 0.0, чтобы отключить.",
-
   "farmersdelight.configuration.enableVanillaSoupExtraEffects": "Дополнительные эффекты ванильных супов",
   "farmersdelight.configuration.enableVanillaSoupExtraEffects.tooltip": "Если включено, супы и рагу из Minecraft будут давать эффект сытости при употреблении, аналогично блюдам из этого мода.",
   "farmersdelight.configuration.enableRabbitStewBuff": "Улучшение тушёного кролика",
@@ -505,26 +461,51 @@
   "farmersdelight.configuration.enablePumpkinPieSneakToPlace.tooltip": "Если включено, для размещения тыквенного пирога как блока потребуется зажать Shift.",
   "farmersdelight.configuration.enableCuttingBoardDispenserBehavior": "Взаимодействие раздатчика с разделочной доской",
   "farmersdelight.configuration.enableCuttingBoardDispenserBehavior.tooltip": "Если включено, раздатчик сможет использовать разделочную доску перед собой, применяя хранящиеся в нём предметы как режущие инструменты.",
-
   "farmersdelight.configuration.enableStackableSoupItems": "Складываемые супы",
   "farmersdelight.configuration.enableStackableSoupItems.tooltip": "Если включено, любые BowlFoodItem из следующего списка будут складываться до 16 штук, как и блюда из этого мода.",
   "farmersdelight.configuration.soupItemList": "Предметы-супы",
   "farmersdelight.configuration.soupItemList.tooltip": "Список целевых продуктов питания. Для применения эффекта они должны расширять класс BowlFoodItem в коде. По умолчанию — ванильные супы и похлёбки.",
-
   "farmersdelight.configuration.generateFDChestLoot": "Генерация добычи из мода в ванильных сундуках",
   "farmersdelight.configuration.generateFDChestLoot.tooltip": "Если включено, в таблицы добычи сундуков по всему миру будут добавлены новые пулы, содержащие предметы из этого мода (верёвки, культуры, инструменты и т.д.).",
   "farmersdelight.configuration.generateVillageCompostHeaps": "Генерация компостных куч в деревнях",
   "farmersdelight.configuration.generateVillageCompostHeaps.tooltip": "Если включено, компостные кучи (структуры с кучами органического компоста) иногда будут появляться в деревнях.",
   "farmersdelight.configuration.generateFDCropsOnVillageFarms": "Генерация культур из мода на фермах в деревнях",
   "farmersdelight.configuration.generateFDCropsOnVillageFarms.tooltip": "Если включено, культуры из этого мода иногда будут заменять стандартные культуры на фермерских участках деревень.",
-
   "farmersdelight.configuration.enableTomatoRopePermanence": "Постоянство верёвки томатов",
   "farmersdelight.configuration.enableTomatoRopePermanence.tooltip": "Томатные культуры, висящие на верёвке, принудительно размещают блок верёвки при разрушении. Из-за технических ограничений это сказывается, в частности, на команды, из-за чего не удаётся выполнить команду «setblock» для данного блока с первого раза.\n\nОтключите это, если данный блок мешает редактировать область в режиме творчества или с помощью команд. Для обычного игрового процесса рекомендуется оставить включённым.",
-
   "farmersdelight.configuration.enableNourishmentHungerOverlay": "Наложение эффекта сытости на шкалу голода",
   "farmersdelight.configuration.enableNourishmentHungerOverlay.tooltip": "Если включено, при наличии у игрока эффекта сытости поверх шкалы еды будет отображаться золотистое наложение.",
   "farmersdelight.configuration.enableComfortHealthOverlay": "Наложение эффекта комфорта на шкалу здоровья",
   "farmersdelight.configuration.enableComfortHealthOverlay.tooltip": "Если включено, при наличии у игрока эффекта комфорта поверх шкалы здоровья будет отображаться анимированное наложение.",
   "farmersdelight.configuration.enableFoodEffectTooltip": "Подсказка об эффектах еды",
-  "farmersdelight.configuration.enableFoodEffectTooltip.tooltip": "Если включено, продукты питания будут отображать подсказки с эффектами, которые они дают при употреблении (если таковые имеются). Применяется к продуктам как из Minecraft, так и из этого мода."
+  "farmersdelight.configuration.enableFoodEffectTooltip.tooltip": "Если включено, продукты питания будут отображать подсказки с эффектами, которые они дают при употреблении (если таковые имеются). Применяется к продуктам как из Minecraft, так и из этого мода.",
+  "block.farmersdelight.poplar_cabinet": "Тополевая кладовая",
+  "block.farmersdelight.straw_bed": "Соломенная кровать",
+  "block.farmersdelight.hay_bed": "Кровать из сена",
+  "item.farmersdelight.copper_knife": "Медный нож",
+  "gui.jei.category.smelting.time.seconds": "%s с",
+  "gui.jei.category.smelting.experience": "%s опыта",
+  "farmersdelight.configuration.enableVanillaStrawBedRename": "Переименовать ванильную соломенную кровать",
+  "farmersdelight.configuration.enableStrawBedRename.tooltip": "Если включено, ванильная соломенная кровать будет называться «Кровать из сена», ведь она явно сделана не из соломы.",
+  "gui.farmersdelight.open_mod_page": "Открыть страницу мода",
+  "farmersdelight.configuration.open_mod_page": "Открыть страницу %s на CurseForge",
+  "tag.block.farmersdelight.does_not_survive.rich_soil": "Плодородная почва",
+  "tag.block.farmersdelight.does_not_survive.rich_soil_farmland": "Плодородная пашня",
+  "tag.block.farmersdelight.survives.rich_soil": "Плодородная почва",
+  "tag.block.farmersdelight.survives.rich_soil_farmland": "Плодородная пашня",
+  "tag.entity_type.farmersdelight.drops_leather": "Дают кожу",
+  "tag.worldgen.farmersdelight.biome.has_brown_mushroom_colony": "Есть колонии коричневых грибов",
+  "tag.worldgen.farmersdelight.biome.has_red_mushroom_colony": "Есть колонии красных грибов",
+  "tag.worldgen.farmersdelight.biome.has_wild_beetroots": "Есть морская свёкла",
+  "tag.worldgen.farmersdelight.biome.has_wild_cabbage": "Есть дикая капуста",
+  "tag.worldgen.farmersdelight.biome.wild_carrots_blacklist": "Без дикой моркови",
+  "tag.worldgen.farmersdelight.biome.wild_carrots_whitelist": "С дикой морковью",
+  "tag.worldgen.farmersdelight.biome.wild_onions_blacklist": "Без дикого лука",
+  "tag.worldgen.farmersdelight.biome.wild_onions_whitelist": "С диким луком",
+  "tag.worldgen.farmersdelight.biome.wild_potatoes_blacklist": "Без дикого картофеля",
+  "tag.worldgen.farmersdelight.biome.wild_potatoes_whitelist": "С диким картофелем",
+  "tag.worldgen.farmersdelight.biome.wild_rice_blacklist": "Без дикого риса",
+  "tag.worldgen.farmersdelight.biome.wild_rice_whitelist": "С диким рисом",
+  "tag.worldgen.farmersdelight.biome.wild_tomatoes_blacklist": "Без томатных кустов",
+  "tag.worldgen.farmersdelight.biome.wild_tomatoes_whitelist": "С томатными кустами"
 }

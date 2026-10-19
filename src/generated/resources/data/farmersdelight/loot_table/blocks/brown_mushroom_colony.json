@@ -62,7 +62,7 @@
                   {
                     "type": "minecraft:inverted",
                     "term": {
-                      "type": "farmersdelight:can_item_perform_ability",
+                      "type": "neoforge:can_item_perform_ability",
                       "ability": "shears_harvest"
                     }
                   },
@@ -87,7 +87,7 @@
                 "type": "minecraft:all_of",
                 "terms": [
                   {
-                    "type": "farmersdelight:can_item_perform_ability",
+                    "type": "neoforge:can_item_perform_ability",
                     "ability": "shears_harvest"
                   },
                   {

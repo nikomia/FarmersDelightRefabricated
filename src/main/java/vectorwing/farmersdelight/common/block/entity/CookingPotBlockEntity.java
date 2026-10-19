@@ -7,10 +7,6 @@ import it.unimi.dsi.fastutil.ints.IntImmutableList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
-import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
-import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
-import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -29,6 +25,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.Nameable;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
@@ -60,6 +57,7 @@ import vectorwing.farmersdelight.common.item.component.ItemStackWrapper;
 import vectorwing.farmersdelight.common.registry.*;
 import vectorwing.farmersdelight.common.utility.ItemUtils;
 import vectorwing.farmersdelight.common.utility.TextUtils;
+import vectorwing.farmersdelight.refabricated.inventory.ItemHandler;
 import vectorwing.farmersdelight.refabricated.inventory.ItemStackHandler;
 
 import java.util.*;
@@ -67,7 +65,7 @@ import java.util.stream.IntStream;
 
 import static java.util.Map.entry;
 
-public class CookingPotBlockEntity extends SyncedBlockEntity implements ExtendedMenuProvider<BlockPos>, HeatableBlockEntity, Nameable, RecipeCraftingHolder
+public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProvider, HeatableBlockEntity, Nameable, RecipeCraftingHolder
 {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final Codec<Map<ResourceKey<Recipe<?>>, Integer>> RECIPES_USED_CODEC = Codec.unboundedMap(Recipe.KEY_CODEC, Codec.INT);
@@ -117,10 +115,6 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements Extended
 		this.cookingPotData = createIntArray();
 		this.usedRecipeTracker = new Object2IntOpenHashMap<>();
 		this.quickCheck = RecipeManager.createCheck(ModRecipeTypes.COOKING.get());
-	}
-
-	public static void init() {
-		ItemStorage.SIDED.registerForBlockEntity(CookingPotBlockEntity::getStorage, ModBlockEntityTypes.COOKING_POT.get());
 	}
 
 	/*
@@ -505,7 +499,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements Extended
 	}
 
 	@NonNull
-	public Storage<ItemVariant> getStorage(@Nullable Direction side) {
+	public ItemHandler getStorage(@Nullable Direction side) {
 		if (side == null || side.equals(Direction.UP)) {
 			return inputHandler;
 		} else {
@@ -600,8 +594,4 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements Extended
 		};
 	}
 
-	@Override
-	public BlockPos getScreenOpeningData(ServerPlayer player) {
-		return this.getBlockPos();
-	}
 }

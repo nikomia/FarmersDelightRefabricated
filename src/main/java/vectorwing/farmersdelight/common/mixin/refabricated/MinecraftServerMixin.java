@@ -1,6 +1,6 @@
 package vectorwing.farmersdelight.common.mixin.refabricated;
 
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.world.level.gamerules.GameRule;
@@ -21,7 +21,7 @@ public class MinecraftServerMixin {
 	@Inject(method = "onGameRuleChanged", at = @At("HEAD"))
 	private <T> void fdrf$syncNaturalRegenerationGameRule(GameRule<T> rule, T value, CallbackInfo ci) {
 		if (rule == GameRules.NATURAL_HEALTH_REGENERATION) {
-			this.playerList.getPlayers().forEach((player) -> ServerPlayNetworking.send(player, new SendNaturalRegenerationValuePayload((boolean) value)));
+			this.playerList.getPlayers().forEach((player) -> PacketDistributor.sendToPlayer(player, new SendNaturalRegenerationValuePayload((boolean) value)));
 		}
 	}
 }

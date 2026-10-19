@@ -1,6 +1,6 @@
 package vectorwing.farmersdelight.common.registry;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BlockEntityTypes;
@@ -13,17 +13,17 @@ import static vectorwing.farmersdelight.refabricated.RegUtils.regBlockEntity;
 public class ModBlockEntityTypes
 {
 	public static final Supplier<BlockEntityType<StoveBlockEntity>> STOVE = regBlockEntity("stove",
-			() -> FabricBlockEntityTypeBuilder.create(StoveBlockEntity::new, ModBlocks.STOVE.get()).build());
+			() -> new BlockEntityType<>(StoveBlockEntity::new, ModBlocks.STOVE.get()));
 	public static final Supplier<BlockEntityType<CookingPotBlockEntity>> COOKING_POT = regBlockEntity("cooking_pot",
-			() -> FabricBlockEntityTypeBuilder.create(CookingPotBlockEntity::new, ModBlocks.COOKING_POT.get()).build());
+			() -> new BlockEntityType<>(CookingPotBlockEntity::new, ModBlocks.COOKING_POT.get()));
 	public static final Supplier<BlockEntityType<BasketBlockEntity>> BASKET = regBlockEntity("basket",
-			() -> FabricBlockEntityTypeBuilder.create(BasketBlockEntity::new, ModBlocks.WOODEN_BASKET.get(), ModBlocks.BAMBOO_BASKET.get()).build());
+			() -> new BlockEntityType<>(BasketBlockEntity::new, ModBlocks.WOODEN_BASKET.get(), ModBlocks.BAMBOO_BASKET.get()));
 	public static final Supplier<BlockEntityType<CuttingBoardBlockEntity>> CUTTING_BOARD = regBlockEntity("cutting_board",
-			() -> FabricBlockEntityTypeBuilder.create(CuttingBoardBlockEntity::new, ModBlocks.CUTTING_BOARD.get()).build());
+			() -> new BlockEntityType<>(CuttingBoardBlockEntity::new, ModBlocks.CUTTING_BOARD.get()));
 	public static final Supplier<BlockEntityType<SkilletBlockEntity>> SKILLET = regBlockEntity("skillet",
-			() -> FabricBlockEntityTypeBuilder.create(SkilletBlockEntity::new, ModBlocks.SKILLET.get()).build());
+			() -> new BlockEntityType<>(SkilletBlockEntity::new, ModBlocks.SKILLET.get()));
 	public static final Supplier<BlockEntityType<CabinetBlockEntity>> CABINET = regBlockEntity("cabinet",
-			() -> FabricBlockEntityTypeBuilder.create(CabinetBlockEntity::new,
+			() -> new BlockEntityType<>(CabinetBlockEntity::new,
 							ModBlocks.OAK_CABINET.get(),
 							ModBlocks.BIRCH_CABINET.get(),
 							ModBlocks.SPRUCE_CABINET.get(),
@@ -36,18 +36,19 @@ public class ModBlockEntityTypes
 							ModBlocks.PALE_OAK_CABINET.get(),
 							ModBlocks.POPLAR_CABINET.get(),
 							ModBlocks.CRIMSON_CABINET.get(),
-							ModBlocks.WARPED_CABINET.get())
-					.build());
+							ModBlocks.WARPED_CABINET.get()));
 	
 	@SafeVarargs
-	private static void addSupportedBlocks(BlockEntityType<?> type, Supplier<Block>... blocks) {
-		for (Supplier<Block> block : blocks) {
-			type.addValidBlock(block.get());
-		}
+	private static void addSupportedBlocks(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Supplier<Block>... blocks) {
+		event.modify(type, java.util.Arrays.stream(blocks).map(Supplier::get).toArray(Block[]::new));
 	}
 
 	public static void touch() {
-		addSupportedBlocks(BlockEntityTypes.SIGN,
+	}
+
+	// Canvas signs are vanilla signs: their blocks are added to the vanilla sign types
+	public static void onAddBlocks(BlockEntityTypeAddBlocksEvent event) {
+		addSupportedBlocks(event, BlockEntityTypes.SIGN,
 			ModBlocks.CANVAS_SIGN,
 			ModBlocks.WHITE_CANVAS_SIGN,
 			ModBlocks.ORANGE_CANVAS_SIGN,
@@ -82,7 +83,7 @@ public class ModBlockEntityTypes
 			ModBlocks.GREEN_CANVAS_WALL_SIGN,
 			ModBlocks.RED_CANVAS_WALL_SIGN,
 			ModBlocks.BLACK_CANVAS_WALL_SIGN);
-		addSupportedBlocks(BlockEntityTypes.HANGING_SIGN,
+		addSupportedBlocks(event, BlockEntityTypes.HANGING_SIGN,
 			ModBlocks.HANGING_CANVAS_SIGN,
 			ModBlocks.WHITE_HANGING_CANVAS_SIGN,
 			ModBlocks.ORANGE_HANGING_CANVAS_SIGN,

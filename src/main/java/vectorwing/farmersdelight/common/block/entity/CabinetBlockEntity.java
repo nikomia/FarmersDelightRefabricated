@@ -1,6 +1,5 @@
 package vectorwing.farmersdelight.common.block.entity;
 
-import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
@@ -58,12 +57,6 @@ public class CabinetBlockEntity extends RandomizableContainerBlockEntity
 		super(ModBlockEntityTypes.CABINET.get(), pos, state);
 	}
 
-    public static void init() {
-        ItemStorage.SIDED.registerForBlockEntity(
-                (be, context) -> new InvWrapper(be),
-                ModBlockEntityTypes.CABINET.get()
-        );
-    }
 
 	@Override
 	public void saveAdditional(ValueOutput output) {

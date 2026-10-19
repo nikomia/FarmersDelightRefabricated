@@ -2,7 +2,7 @@ package vectorwing.farmersdelight.common.block;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.neoforged.neoforge.common.Tags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -64,7 +64,7 @@ public class MushroomColonyBlock extends VegetationBlock implements Bonemealable
 
 		if (age > 0) {
 			ItemStack mushroomStack = getCloneItemStack(level, pos, state, false);
-			if (ItemUtils.isValidTool(heldStack, ItemAbility.SHEARS_HARVEST, ConventionalItemTags.SHEAR_TOOLS)) {
+			if (ItemUtils.isValidTool(heldStack, ItemAbility.SHEARS_HARVEST, Tags.Items.TOOLS_SHEAR)) {
 				level.setBlock(pos, state.setValue(COLONY_AGE, age - 1), 2);
 				level.playSound(null, pos, SoundEvents.SHEEP_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
 				popResource(level, pos, mushroomStack);

@@ -17,7 +17,7 @@
     }
   ],
   "tool": {
-    "fabric:type": "farmersdelight:item_ability",
+    "neoforge:ingredient_type": "farmersdelight:item_ability",
     "action": "shovel_dig"
   }
 }

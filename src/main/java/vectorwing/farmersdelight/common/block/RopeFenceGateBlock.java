@@ -7,6 +7,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FenceGateBlock;
+import vectorwing.farmersdelight.common.registry.ModSounds;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -23,7 +24,7 @@ public class RopeFenceGateBlock extends FenceGateBlock
 
 	public RopeFenceGateBlock(Properties props) {
 		// Spruce is a placeholder.
-		super(WoodType.OAK, props);
+		super(props, ModSounds.BLOCK_ROPE_FENCE_GATE_OPEN.get(), ModSounds.BLOCK_ROPE_FENCE_GATE_CLOSE.get());
 	}
 
 	public BlockState updateShape(BlockState state,

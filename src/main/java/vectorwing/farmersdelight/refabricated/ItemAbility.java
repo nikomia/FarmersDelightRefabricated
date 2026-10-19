@@ -1,7 +1,7 @@
 package vectorwing.farmersdelight.refabricated;
 
 import com.mojang.serialization.Codec;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.neoforged.neoforge.common.Tags;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.StringRepresentable;
@@ -35,7 +35,7 @@ public enum ItemAbility implements StringRepresentable {
         //item ability -> tag
 
         return switch (this) {
-            case SHEARS_CARVE, SHEARS_HARVEST, SHEARS_DIG -> itemHolder.is(ConventionalItemTags.SHEAR_TOOLS);
+            case SHEARS_CARVE, SHEARS_HARVEST, SHEARS_DIG -> itemHolder.is(Tags.Items.TOOLS_SHEAR);
             case SWORD_DIG -> itemHolder.is(ItemTags.SWORDS);
             case SHOVEL_DIG -> itemHolder.is(ItemTags.SHOVELS);
             case PICKAXE_DIG -> itemHolder.is(ItemTags.PICKAXES);

@@ -1,6 +1,6 @@
 package vectorwing.farmersdelight.common.event;
 
-import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -22,26 +22,22 @@ import java.util.List;
 
 public class CommonModBusEvents
 {
-	public static void init() {
-		DefaultItemComponentEvents.MODIFY.register(CommonModBusEvents::onModifyDefaultComponents);
-	}
-
-	public static void onModifyDefaultComponents(DefaultItemComponentEvents.ModifyContext context) {
+	public static void onModifyDefaultComponents(ModifyDefaultComponentsEvent context) {
 		if (Configuration.ENABLE_STACKABLE_SOUP_ITEMS.get()) {
 			Configuration.SOUP_ITEM_LIST.get().forEach((key) -> {
-				Item item = BuiltInRegistries.ITEM.getValue(Identifier.parse(key));
-				context.modify(item, (builder) -> builder.set(DataComponents.MAX_STACK_SIZE, 16));
+				BuiltInRegistries.ITEM.getOptional(Identifier.parse(key)).ifPresent(item ->
+						context.modify(item, (builder, provider, i) -> builder.set(DataComponents.MAX_STACK_SIZE, 16)));
 			});
 		}
 		// Handle Rabbit Stew first.
 		if (Configuration.ENABLE_RABBIT_STEW_BUFF.get()) {
-			context.modify(Items.RABBIT_STEW, builder -> builder
+			context.modify(Items.RABBIT_STEW, (builder, provider, i) -> builder
 					.set(DataComponents.FOOD, FoodValues.RABBIT_STEW_BUFF));
 		}
 
 		if (Configuration.ENABLE_VANILLA_SOUP_EXTRA_EFFECTS.get() || Configuration.ENABLE_RABBIT_STEW_BUFF.get()) {
 			for (Item item : FoodValues.ConsumableValues.VANILLA_SOUP_EFFECTS.keySet()) {
-				context.modify(item, builder -> {
+				context.modify(item, (builder, provider, i) -> {
 					List<MobEffectInstance> effects = new ArrayList<>();
 					if (item == Items.RABBIT_STEW && Configuration.ENABLE_RABBIT_STEW_BUFF.get()) {
 						effects.add(new MobEffectInstance(MobEffects.JUMP_BOOST, 200, 1));
@@ -51,7 +47,7 @@ public class CommonModBusEvents
 			}
 		}
 		if (Configuration.ENABLE_VANILLA_STRAW_BED_RENAME.get()) {
-			context.modify(Items.STRAW_BED, builder -> {
+			context.modify(Items.STRAW_BED, (builder, provider, i) -> {
 				builder.set(DataComponents.ITEM_NAME, Component.translatable("block.farmersdelight.hay_bed"));
 			});
 		}
@@ -59,7 +55,8 @@ public class CommonModBusEvents
 	}
 
 	private static Consumable addVanillaSoupEffect(DataComponentMap.Builder builder, Item item, List<MobEffectInstance> additionalEffects) {
-		Consumable consumable = builder.getOrCreate(DataComponents.CONSUMABLE, () -> Consumables.DEFAULT_FOOD);
+		// Vanilla soups use the default food Consumable; the builder cannot read the current value
+		Consumable consumable = Consumables.DEFAULT_FOOD;
 		List<ConsumeEffect> onConsumeEffects = new ArrayList<>(consumable.onConsumeEffects());
 		if (!additionalEffects.isEmpty()) {
 			onConsumeEffects.add(new ApplyStatusEffectsConsumeEffect(additionalEffects));

@@ -1,34 +1,27 @@
 package vectorwing.farmersdelight.common.crafting.condition;
 
 import com.mojang.serialization.MapCodec;
-import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
-import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditionType;
-import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
-import net.minecraft.resources.RegistryOps;
-import org.jspecify.annotations.Nullable;
-import vectorwing.farmersdelight.FarmersDelight;
+import net.neoforged.neoforge.common.conditions.ICondition;
+import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.Configuration;
 
-public class VanillaCrateEnabledCondition implements ResourceCondition
+public class VanillaCrateEnabledCondition implements ICondition
 {
-	public static final VanillaCrateEnabledCondition INSTANCE = new VanillaCrateEnabledCondition();
+
 	public static final MapCodec<VanillaCrateEnabledCondition> CODEC = MapCodec.unit(new VanillaCrateEnabledCondition());
-	public static final ResourceConditionType<VanillaCrateEnabledCondition> TYPE = ResourceConditionType.create(FarmersDelight.id("vanilla_crates_enabled"), CODEC);
+	public static final VanillaCrateEnabledCondition INSTANCE = new VanillaCrateEnabledCondition();
 
 	public VanillaCrateEnabledCondition() {
 	}
 
-	public static void init() {
-		ResourceConditions.register(TYPE);
-	}
-
 	@Override
-	public ResourceConditionType<?> getType() {
-		return TYPE;
-	}
-
-	@Override
-	public boolean test(RegistryOps.@Nullable RegistryInfoLookup registryInfoLookup) {
+	public boolean test(@NotNull IContext context) {
 		return Configuration.ENABLE_VANILLA_CROP_CRATES.get();
 	}
+
+	@Override
+	public @NotNull MapCodec<? extends ICondition> codec() {
+		return CODEC;
+	}
+
 }

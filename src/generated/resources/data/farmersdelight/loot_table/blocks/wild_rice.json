@@ -33,7 +33,7 @@
             {
               "type": "minecraft:item",
               "condition": {
-                "type": "farmersdelight:can_item_perform_ability",
+                "type": "neoforge:can_item_perform_ability",
                 "ability": "shears_harvest"
               },
               "name": "farmersdelight:wild_rice"
@@ -82,7 +82,7 @@
             {
               "type": "minecraft:item",
               "condition": {
-                "type": "farmersdelight:can_item_perform_ability",
+                "type": "neoforge:can_item_perform_ability",
                 "ability": "shears_harvest"
               },
               "name": "farmersdelight:wild_rice"

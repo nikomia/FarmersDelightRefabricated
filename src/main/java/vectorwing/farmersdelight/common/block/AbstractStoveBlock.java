@@ -1,7 +1,6 @@
 package vectorwing.farmersdelight.common.block;
 
-import net.fabricmc.fabric.api.registry.LandPathTypeRegistry;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.neoforged.neoforge.common.Tags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -54,12 +53,6 @@ public abstract class AbstractStoveBlock extends BaseEntityBlock {
 				.setValue(FACING, Direction.NORTH)
 				.setValue(LIT, false)
 		);
-		LandPathTypeRegistry.registerDynamic(
-			this,
-			(state, world, pos, neighbor) -> {
-				AbstractStoveBlock block = (AbstractStoveBlock) state.getBlock();
-				return block.getBlockPathType(state, world, pos, null);
-			});
 	}
 
 	@Override
@@ -111,7 +104,7 @@ public abstract class AbstractStoveBlock extends BaseEntityBlock {
 			return InteractionResult.SUCCESS;
 		}
 
-		if (heldStack.is(ConventionalItemTags.WATER_BUCKETS)) {
+		if (heldStack.is(Tags.Items.BUCKETS_WATER)) {
 			if (!level.isClientSide()) {
 				level.playSound(null, pos, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0F, 1.0F);
 			}

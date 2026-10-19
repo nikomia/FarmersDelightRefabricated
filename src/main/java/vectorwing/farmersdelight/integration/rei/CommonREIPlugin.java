@@ -1,6 +1,7 @@
 
 package vectorwing.farmersdelight.integration.rei;
 
+import me.shedaniel.rei.forge.REIPluginCommon;
 import me.shedaniel.rei.api.common.display.DisplaySerializerRegistry;
 import me.shedaniel.rei.api.common.plugins.REICommonPlugin;
 import me.shedaniel.rei.api.common.registry.display.ServerDisplayRegistry;
@@ -26,6 +27,7 @@ import vectorwing.farmersdelight.integration.rei.display.DecompositionDisplay;
 
 import java.util.List;
 
+@REIPluginCommon
 public class CommonREIPlugin implements REICommonPlugin {
     @Override
     public void registerDisplaySerializer(DisplaySerializerRegistry registry) {

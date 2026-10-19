@@ -1,6 +1,5 @@
 package vectorwing.farmersdelight.common.block;
 
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -271,9 +270,6 @@ public class TomatoBlock extends CropBlock
 	}
 
 	protected float getGrowthSpeed(BlockState state, ServerLevel level, BlockPos pos) {
-		if (FabricLoader.getInstance().isModLoaded("launchpad")) {
-			return LaunchpadEvents.getGrowthSpeed(state, level, pos);
-		}
-		else return getGrowthSpeed(state.getBlock(), level, pos);
+		return LaunchpadEvents.getGrowthSpeed(state, level, pos);
 	}
 }

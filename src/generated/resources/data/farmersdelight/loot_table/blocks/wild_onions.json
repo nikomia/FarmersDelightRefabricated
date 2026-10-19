@@ -9,7 +9,7 @@
             {
               "type": "minecraft:item",
               "condition": {
-                "type": "farmersdelight:can_item_perform_ability",
+                "type": "neoforge:can_item_perform_ability",
                 "ability": "shears_harvest"
               },
               "name": "farmersdelight:wild_onions"
@@ -40,7 +40,7 @@
       "condition": {
         "type": "minecraft:inverted",
         "term": {
-          "type": "farmersdelight:can_item_perform_ability",
+          "type": "neoforge:can_item_perform_ability",
           "ability": "shears_harvest"
         }
       },

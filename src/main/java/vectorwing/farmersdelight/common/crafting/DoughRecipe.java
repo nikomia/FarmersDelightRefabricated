@@ -1,7 +1,7 @@
 package vectorwing.farmersdelight.common.crafting;
 
 import com.mojang.serialization.MapCodec;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.neoforged.neoforge.common.Tags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -36,7 +36,7 @@ public class DoughRecipe extends CustomRecipe
 					if (!wheatStack.isEmpty()) return false;
 					wheatStack = selectedStack;
 				} else {
-					if (!selectedStack.is(ConventionalItemTags.WATER_BUCKETS)) {
+					if (!selectedStack.is(Tags.Items.BUCKETS_WATER)) {
 						return false;
 					}
 					waterStack = selectedStack;
@@ -58,7 +58,7 @@ public class DoughRecipe extends CustomRecipe
 
 		for (int index = 0; index < remainders.size(); ++index) {
 			ItemStack selectedStack = container.getItem(index);
-			if (selectedStack.is(ConventionalItemTags.WATER_BUCKETS)) {
+			if (selectedStack.is(Tags.Items.BUCKETS_WATER)) {
 				remainders.set(index, selectedStack.copy());
 			}
 		}

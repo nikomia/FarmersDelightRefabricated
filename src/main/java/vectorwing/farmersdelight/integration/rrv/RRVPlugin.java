@@ -5,7 +5,7 @@ import cc.cassian.rrv.api.recipe.ItemView;
 import cc.cassian.rrv.client.recipe.ClientRecipeManager;
 import cc.cassian.rrv.common.builtin.crafting.CraftingClientRecipe;
 import cc.cassian.rrv.common.recipe.inventory.SlotContent;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.neoforged.neoforge.common.Tags;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -36,7 +36,7 @@ public class RRVPlugin implements ReliableRecipeViewerClientPlugin {
             recipeList.add(new DecompositionClientRecipe(ModItems.ORGANIC_COMPOST.get().getDefaultInstance(), ModItems.RICH_SOIL.get().getDefaultInstance()));
 			ClientRecipeManager.INSTANCE.getRecipesForType(RecipeType.CRAFTING).forEach(recipeHolder -> {
 				if (recipeHolder.value() instanceof DoughRecipe) {
-					recipeList.add(new CraftingClientRecipe.Builder(recipeHolder.id().identifier(), List.of(SlotContent.of(Items.WHEAT), SlotContent.of(ConventionalItemTags.WATER_BUCKETS))).setResult(new ItemStackTemplate(ModItems.WHEAT_DOUGH.get())).build());
+					recipeList.add(new CraftingClientRecipe.Builder(recipeHolder.id().identifier(), List.of(SlotContent.of(Items.WHEAT), SlotContent.of(Tags.Items.BUCKETS_WATER))).setResult(new ItemStackTemplate(ModItems.WHEAT_DOUGH.get())).build());
 				}
 			});
         });
